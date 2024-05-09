@@ -64,6 +64,7 @@ const ACTION = {
     
     KONATA_GO_TO_BOOKMARK: 96,      // Go to a specified bookmark
     KONATA_SET_BOOKMARK: 97,        // Set a bookmark
+    KONATA_ZOOM_H: 98,        // 拡大/縮小
 
     // MUST NOT OVERLAP NUMBERS IN CHANGE
 };

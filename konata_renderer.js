@@ -44,10 +44,12 @@ class KonataRenderer{
         // 拡大率レベル
         this.MAX_ZOOM_LEVEL_ = 24;
         this.zoomLevel_ = 0;       
+        this.zoomLevelH_ = 0;       
         this.zoomScale_ = 1;       // 拡大率 (zoomLevel に同期)
+        this.zoomScaleH_ = 1;
         this.laneNum_ = 1;
         this.laneW_ = this.OP_W * this.zoomScale_;
-        this.laneH_ = this.OP_H * this.zoomScale_;
+        this.laneH_ = this.OP_H * this.zoomScaleH_;
         this.opW_ = this.laneW_ * this.laneNum_; 
         this.opH_ = this.laneH_ * this.laneNum_; 
 
@@ -108,7 +110,9 @@ class KonataRenderer{
 
         this.viewPos_ = {left:0, top:0};
         this.zoomLevel_ = 0;
+        this.zoomLevelH_ = 0;
         this.zoomScale_ = this.calcScale_(this.zoomLevel_);
+        this.zoomScaleH_ = this.calcScale_(this.zoomLevelH_);
 
         this.depArrowType = config.depArrowType;
 
@@ -519,10 +523,12 @@ class KonataRenderer{
             self.opH_ = self.laneH_ * laneNum;
         }
         else{
-            self.laneH_ = self.OP_H * zoomScale;
+            //self.laneH_ = self.OP_H * zoomScale;
+            self.laneH_ = self.OP_H;
             self.opH_ = self.laneH_ * laneNum;
         }
-        self.lane_height_margin_ = self.canDrawFrame ? self.LANE_HEIGHT_MARGIN * zoomScale : 0;
+        //self.lane_height_margin_ = self.canDrawFrame ? self.LANE_HEIGHT_MARGIN * zoomScale : 0;
+        self.lane_height_margin_ = self.canDrawFrame ? self.LANE_HEIGHT_MARGIN : 0;
         //self.drawingInterval_ = Math.floor(20/(zoomScale * Math.log(zoomScale)/0.005));
         self.drawingInterval_ = Math.floor(1 / self.OP_H / zoomScale / 2);
 
